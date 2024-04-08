@@ -1,0 +1,61 @@
+﻿@model Core.Models.MyServices
+
+
+<h1>Create Service</h1>
+
+<form asp-controller="Service" asp-action="Save" role="form" method="post" enctype="multipart/form-data">
+
+    <div class="form-group">
+        <label asp-for="Id" class="control-label">Id:</label>
+        <div>
+            <input type="hidden" asp-for="Id" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Title" class="control-label">Title:</label>
+        <div>
+            <input type="text" name="Title" class="form-control-file" asp-for="Title" />
+            <span asp-validation-for="Title" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Description" class="control-label">Description:</label>
+        <div>
+            <textarea class="form-control" rows="4" asp-for="Description"></textarea>
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="NameServ" class="control-label">NameServ:</label>
+        <div>
+            <input type="text" asp-for="NameServ" class="form-control" />
+            <span asp-validation-for="NameServ" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Desc_Serv" class="control-label">Desc_Serv:</label>
+        <div>
+            <textarea class="form-control" rows="4" asp-for="Desc_Serv"></textarea>
+            <span asp-validation-for="Desc_Serv" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Image" class="control-label">Image:</label>
+        <div>
+            <input type="file" name="Files" class="form-control-file" asp-for="Image" />
+            <span asp-validation-for="Image" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div>
+            <button type="submit" class="btn btn-primary">Create</button>
+            <a asp-action="MyService" class="btn btn-secondary">Cancel</a>
+        </div>
+    </div>
+</form>
