@@ -13,6 +13,8 @@ builder.Services.AddScoped<IAboutServ, AboutServ>();
 builder.Services.AddScoped<IContactServ, ContactServ>();
 builder.Services.AddScoped<IMyServiceServ, MyServiceServ>();
 builder.Services.AddScoped<IWorkServ, WorkServ>();
+builder.Services.AddScoped<ITeamServ, TeamServ>();
+builder.Services.AddScoped<IUserServ, UserServ>();
 
 var app = builder.Build();
 
@@ -33,13 +35,15 @@ app.UseAuthorization();
 
 app.UseEndpoints(endpoints =>
 {
-    app.MapControllerRoute(
-                name: "areas",
-                pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
 
     app.MapControllerRoute(
-        name: "default",
-        pattern: "{controller=Home}/{action=Index}/{id?}");
+    name: "default",
+    pattern: "{area=Client}/{controller=Home}/{action=Index}");
+
+    endpoints.MapControllerRoute(
+    name: "default",
+    pattern: "{area=Admin}/{controller=UserAdmin}/{action=Login}/{id?}");
+
 });
 
 

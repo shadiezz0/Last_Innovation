@@ -53,7 +53,7 @@ namespace Innovation.Areas.Admin.Controllers
                     if (file.Length > 0)
                     {
                         string Image = Guid.NewGuid().ToString() + ".jpg";
-                        var filePath = Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot\UploadAbout", Image);
+                        var filePath = Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot\UploadWork", Image);
                         using (var fileStream = System.IO.File.Create(filePath))
                         {
                             await file.CopyToAsync(fileStream);

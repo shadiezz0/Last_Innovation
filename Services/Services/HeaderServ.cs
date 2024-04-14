@@ -1,5 +1,4 @@
-﻿using Azure;
-using Core.Interfaces;
+﻿using Core.Interfaces;
 using Core.Models;
 using Infrastructure.Repositories;
 using Services.IServices;

@@ -19,7 +19,7 @@ namespace Infrastructure.Repositories.ReposPages
         }
         public async Task<IEnumerable<About>> GetAboutAsync()
         {
-            return await _context.Abouts.OrderByDescending(p => p.Id).ToListAsync();
+            return await _context.Abouts.OrderBy(p => p.Id).ToListAsync();
         }
     }
 }

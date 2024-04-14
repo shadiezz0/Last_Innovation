@@ -7,9 +7,11 @@ namespace Innovation.Areas.Admin.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            string secretKey = "mySecretKey";
+            if (Request.Cookies.ContainsKey(secretKey))
+                return View();
+            else
+                return RedirectToAction("Login", "UserAdmin");
         }
-
-
     }
 }

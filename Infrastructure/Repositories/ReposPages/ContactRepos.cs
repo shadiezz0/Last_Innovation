@@ -19,7 +19,7 @@ namespace Infrastructure.Repositories.ReposPages
         }
         public async Task<IEnumerable<Contact>> GetContactAsync()
         {
-            return await _context.Contacts.OrderByDescending(p => p.Id).ToListAsync();
+            return await _context.Contacts.OrderBy(p => p.Id).ToListAsync();
         }
     }
 }

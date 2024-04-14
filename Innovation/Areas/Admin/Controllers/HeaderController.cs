@@ -20,10 +20,9 @@ namespace Innovation.Areas.Admin.Controllers
             return View(Sliders);
         }
 
-
-        public async Task<IActionResult> Create(int? id)
+        public async Task<IActionResult> Create([FromRoute]int? id)
         {
-            if (id != null)
+            if (id != 0)
             {
                 var sliders = await _headerServ.GetByIdAsync(id.Value);
                 if (sliders != null)
@@ -77,10 +76,13 @@ namespace Innovation.Areas.Admin.Controllers
             }
         }
 
+
         public async Task<IActionResult> Delete(int Id)
         {
              await _headerServ.DeleteAsync(Id);
             return RedirectToAction("Slider");
         }
+
+
     }
 }

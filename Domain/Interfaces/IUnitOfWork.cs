@@ -14,6 +14,8 @@ namespace Core.Interfaces
         IContact Contact { get; }
         IWork Work { get; }
         IMyServices Services { get; }
+        ITeam Team { get; }
+        IUser User { get; }
         Task<int> CompleteAsync();
 	}
 }

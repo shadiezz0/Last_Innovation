@@ -10,16 +10,16 @@ using System.Threading.Tasks;
 
 namespace Infrastructure.Repositories.ReposPages
 {
-    public class ServiceReposs : BaseRepository<MyServices>, IMyServices
+    public class MyServiceRepos : BaseRepository<MyServices>, IMyServices
     {
         private readonly InnovationDbContext _context;
-        public ServiceReposs(InnovationDbContext context) : base(context)
+        public MyServiceRepos(InnovationDbContext context) : base(context)
         {
             _context = context;
         }
         public async Task<IEnumerable<MyServices>> GetServiceAsync()
         {
-            return await _context.myServices.OrderByDescending(p => p.Id).ToListAsync();
+            return await _context.myServices.OrderBy(p => p.Id).ToListAsync();
         }
     }
 }

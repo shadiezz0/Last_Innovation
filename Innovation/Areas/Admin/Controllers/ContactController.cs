@@ -22,9 +22,9 @@ namespace Innovation.Areas.Admin.Controllers
         }
 
 
-        public async Task<IActionResult> Create(int? id)
+        public async Task<IActionResult> Create([FromRoute] int? id)
         {
-            if (id != null)
+            if (id != 0)
             {
                 var contacts = await _contactServ.GetByIdAsync(id.Value);
                 if (contacts != null)
@@ -53,7 +53,7 @@ namespace Innovation.Areas.Admin.Controllers
                     if (file.Length > 0)
                     {
                         string Image = Guid.NewGuid().ToString() + ".jpg";
-                        var filePath = Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot\UploadAbout", Image);
+                        var filePath = Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot\UploadContact", Image);
                         using (var fileStream = System.IO.File.Create(filePath))
                         {
                             await file.CopyToAsync(fileStream);

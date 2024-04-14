@@ -1,0 +1,39 @@
+﻿@model Innovation.Models.ViewModel
+
+@section Scripts
+{
+    <script src="~/User/js/modernizr.js"></script>
+}
+
+<!-- Banner -->
+@foreach (var items in Model.Headers) {
+    <section class="sub-bnr" tyle="background-image: url(@string.Format("/Upload/{0}",items.Image))">
+        <div class="container">
+            <h2>About The social connect</h2>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/Home/Index">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">About</li>
+                </ol>
+            </nav>
+        </div>
+    </section>
+}
+
+
+@foreach (var item in Model.Abouts)
+{
+    <!-- About  -->
+    <section class="about-sec padding-top-80 padding-bottom-80">
+        <div class="container">
+            <!-- Content -->
+            <div class="heading-block no-margin-bottom">
+                <span class="margin-bottom-10">Welcome The Social Connection Networking</span>
+                <h2 class="margin-bottom-20 margin-top-10">@item.Name</h2>
+            </div>
+            <p>@item.Description</p>
+        </div>
+    </section>
+}
+
+

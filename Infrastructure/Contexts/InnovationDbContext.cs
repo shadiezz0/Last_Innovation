@@ -1,16 +1,11 @@
 ﻿using Core.Models;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Infrastructure.Contexts
 {
     public class InnovationDbContext : DbContext
     {
-        public InnovationDbContext(DbContextOptions options) : base(options)
+        public InnovationDbContext(DbContextOptions<InnovationDbContext> options) : base(options)
         {
         }
         public DbSet<About> Abouts { get; set; }
@@ -18,5 +13,14 @@ namespace Infrastructure.Contexts
         public DbSet<Header> Headers { get; set; }
         public DbSet<MyWorks> MyWorks { get; set; }
         public DbSet<MyServices> myServices { get; set; }
+        public DbSet<Team> Teams { get; set; }
+        public DbSet<User> Users { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<User>()
+                .HasIndex(e => e.Email)
+                .IsUnique();
+        }
     }
 }

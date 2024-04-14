@@ -21,7 +21,7 @@ namespace Infrastructure.Repositories.ReposPages
 
         public async Task<IEnumerable<Header>> GetHeadersAsync()
         {
-            return await _context.Headers.OrderByDescending(p=>p.Id).ToListAsync();
+            return await _context.Headers.OrderBy(p=>p.Id).ToListAsync();
         }
     }
 }

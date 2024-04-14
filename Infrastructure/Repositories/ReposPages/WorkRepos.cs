@@ -19,7 +19,7 @@ namespace Infrastructure.Repositories.ReposPages
         }
         public async Task<IEnumerable<MyWorks>> GetWorksAsync()
         {
-            return await _context.MyWorks.OrderByDescending(p => p.Id).ToListAsync();
+            return await _context.MyWorks.OrderBy(p => p.Id).ToListAsync();
         }
     }
 }

@@ -1,0 +1,51 @@
+﻿@model Innovation.Models.ViewModel
+
+<!-- Content -->
+<div id="content">
+
+    <!-- Banner -->
+    <section class="sub-bnr">
+        <div class="container">
+            <h2>Professionals Available</h2>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/Home/Index">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Professionals</li>
+                </ol>
+            </nav>
+        </div>
+    </section>
+        <!-- Papular Professionals -->
+        <main class="cd-main-content">
+            <section class="padding-top-100 padding-bottom-100">
+
+                <div class="container">
+                    <section class="cd-gallery">
+                        <ul>
+                        @foreach (var tem in Model.Teams)
+                        {
+                            <li class="mix freelance  indui ">
+                                <div class="team-inside">
+                                    <div class="img-sec">
+                                        <img src="@string.Format("/UploadTeam/{0}",tem.Image)" class="img-responsive" alt="">
+                                        <div class="hover-over">
+                                        </div>
+                                    </div>
+                                    <div class="txt-sec">
+                                        <h5><a href="#."> @tem.Name </a></h5>
+                                        <span>@tem.Job</span> <span><i class="fa fa-map-marker"></i>The New York City</span>
+                                    </div>
+                                </div>
+                            </li>
+                          }
+                        </ul>
+                        <div class="clearfix"></div>
+                    </section>
+                </div>
+                
+            </section>
+        </main>
+</div>
+
+
+

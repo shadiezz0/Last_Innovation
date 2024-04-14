@@ -1,0 +1,84 @@
+﻿@model Innovation.Models.ViewModel
+
+<!-- Banner -->
+@foreach (var items in Model.Headers)
+{
+    <section class="bnr" style="background-image: url(@string.Format("/Upload/{0}",items.Image))">
+        <div class="position-center-center mob-normal">
+            <div class="container">
+                <div class="col-lg-8 center-auto text-center">
+                    <h1>@items.Description</h1>
+                    <a href="Client/Account/Index" class="btn">Login</a> <a href="/Client/Account/Registration" class="btn">Register</a>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+
+<!-- ABOUT -->
+@foreach (var aboutt in Model.Abouts)
+{
+    <section class="bg-white">
+        <!-- Right Background -->
+        <div class="main-page-section half_left_layout">
+            <div class="main-half-layout half_right_layout" style="background-image: url(@string.Format("/UploadAbout/{0}",aboutt.Image))">
+                  </div>
+
+            <!-- Left Content -->
+            <div class="main-half-layout-container half_right_layout">
+                <div class="about-us-con">
+                    <h3>@aboutt.Name</h3>
+                    <p>@aboutt.Description</p>
+                    <ul class="count-info row">
+                        <li class="col">
+                            <span class="counter">@aboutt.Phone</span><span></span><br />
+                            <span class="counter">@aboutt.Email</span><span></span>
+                            <p>Company</p>
+                        </li>
+                        <li class="col">
+                            <span class="counter">@aboutt.Address</span><span></span>
+                        </li>
+                    </ul>
+                    <a href="/Home/AboutUs" class="btn">More Info</a>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </section>
+}
+
+<!-- Why Service Us -->
+@foreach (var item in Model.myServices)
+{
+    <section class="why-choose padding-top-100 padding-bottom-0">
+        <div class="container">
+
+            <!-- Why Choose Us Row -->
+            <div class="row">
+                <div class="col-lg-8 margin-top-20 animate fadeInLeft" data-wow-delay="0.4s">
+                    <!-- Tittle -->
+                    <div class="heading-block margin-bottom-20">
+                        <span class="margin-bottom-10">We deliver High Quality Services</span>
+                        <h2>@item.Title</h2>
+                    </div>
+                    <div class="ultra-ser">
+                        <p>@item.Description</p>
+                    </div>
+                    <div class="row margin-top-60">
+                            <div class="col-md-6 animate fadeInUp" data-wow-delay="0.4s">
+                                <div class="clearfix icon-box ib-style-2 i-large i-top padding-bottom-15 border-bottom-1 border-light">
+                                    <div class="ib-info">
+                                        <h4 class="h6">@item.NameServ</h4>
+                                        <p>@item.Desc_Serv</p>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+
+                <!-- Image -->
+                <div class="col-lg-4 text-right animate fadeInRight" data-wow-delay="0.4s"> <img class="img-responsive" src="@string.Format("/UploadAbout/{0}", item.Image)" alt="Why Choose Us Image" /> </div>
+            </div>
+        </div>
+    </section>
+}
