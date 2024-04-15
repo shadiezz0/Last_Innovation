@@ -1,18 +1,13 @@
 ﻿@model Innovation.Models.ViewModel
 
-@section Scripts
-{
-    <script src="~/User/js/modernizr.js"></script>
-}
-
 <!-- Banner -->
 @foreach (var items in Model.Headers) {
-    <section class="sub-bnr" tyle="background-image: url(@string.Format("/Upload/{0}",items.Image))">
+    <section class="sub-bnr" style="background-image: url(@string.Format("/Upload/{0}",items.Image))">
         <div class="container">
-            <h2>About The social connect</h2>
+            <h2>About The Company</h2>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="/Home/Index">Home</a></li>
+                    <li class="breadcrumb-item"><a asp-area="Client" asp-controller="Home" asp-action="Index">Home</a></li>
                     <li class="breadcrumb-item active" aria-current="page">About</li>
                 </ol>
             </nav>
@@ -20,10 +15,9 @@
     </section>
 }
 
-
+<!-- About  -->
 @foreach (var item in Model.Abouts)
 {
-    <!-- About  -->
     <section class="about-sec padding-top-80 padding-bottom-80">
         <div class="container">
             <!-- Content -->
@@ -37,3 +31,56 @@
 }
 
 
+<!-- About  -->
+@foreach (var abt in Model.Abouts)
+{
+    <section class="about-sec padding-top-80 padding-bottom-80">
+        <div class="container">
+            <div class="heading-block no-margin-bottom">
+                <span class="margin-bottom-10">@abt.WorkState</span>
+                <h2 class="margin-bottom-20 margin-top-10">@abt.Title</h2>
+            </div>
+            <p>@abt.Description</p>
+            <hr>
+            <div class="row">
+                <div class="col-md-7">
+                    <p>@abt.DateOfBirth</p>
+                    <h6>@abt.Name - <span>@abt.Nationality</span></h6>
+                </div>
+            </div>
+        </div>
+    </section>
+
+}
+
+
+<!-- ABOUT -->
+@foreach (var aboutt in Model.Abouts)
+{
+    <section class="bg-white">
+        <!-- Right Background -->
+        <div class="main-page-section half_left_layout">
+            <div class="main-half-layout half_right_layout" style="background-image: url(@string.Format("/UploadAbout/{0}",aboutt.Image))">
+            </div>
+
+            <!-- Left Content -->
+            <div class="main-half-layout-container half_right_layout">
+                <div class="about-us-con">
+                    <h3>@aboutt.Name</h3>
+                    <p>@aboutt.Description</p>
+                    <ul class="count-info row">
+                        <li class="col">
+                            <span class="counter">@aboutt.Phone</span><span></span><br />
+                            <span class="counter">@aboutt.Email</span><span></span>
+                            <p>Company</p>
+                        </li>
+                        <li class="col">
+                            <span class="counter">@aboutt.Address</span><span></span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </section>
+}

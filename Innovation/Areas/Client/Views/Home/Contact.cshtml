@@ -1,57 +1,54 @@
 ﻿@model Innovation.Models.ViewModel
 
-<!-- Content -->
-<div id="content">
-
-    <!-- Banner -->
-    <section class="sub-bnr">
+<!-- Banner -->
+@foreach (var items in Model.Headers)
+{
+    <section class="sub-bnr" style="background-image: url(@string.Format("/Upload/{0}",items.Image))">
         <div class="container">
-            <h2>Get in connect with us</h2>
+            <h2>About The social connect</h2>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="/Home/Index">Home</a></li>
+                    <li class="breadcrumb-item"><a asp-area="Client" asp-controller="Home" asp-action="Index">Home</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Contact</li>
                 </ol>
             </nav>
         </div>
     </section>
+}
 
-    <!-- Contact Info -->
-    @foreach (var cont in Model.Contacts)
-    {
-        <section>
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6 padding-0">
-                        <div class="contact-info">
-                            <span class="h4">Socail Connection,</span>
-                            <ul>
-                                <li> <a href="#.">@cont.Phone</a> </li>
-                                <li> <a href="#.">@cont.Email </a> </li>
-                                <li>
-                                    <p>@cont.Address</p>
-                                </li>
-                            </ul>
+<!-- Contact Info -->
+@foreach (var cont in Model.Contacts)
+{
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 padding-0">
+                    <div class="contact-info">
+                        <span class="h4">Socail Connection,</span>
+                        <ul>
+                            <li> <a href="#.">@cont.Phone</a> </li>
+                            <li> <a href="#.">@cont.Email </a> </li>
+                            <li>
+                                <p>@cont.Address</p>
+                            </li>
+                        </ul>
 
-                            <!-- Social Icon -->
-                            <div class="social-icon"> <a href="#."><i class="fab fa-facebook-f"></i></a> <a href="#."><i class="fab fa-whatsapp"></i></a> <a href="#."><i class="fab fa-instagram"></i></a> <a href="#."><i class="fab fa-pinterest-p"></i></a> <a href="#."><i class="fab fa-youtube"></i></a> </div>
-                        </div>
+                        <!-- Social Icon -->
+                        <div class="social-icon"> <a href="#."><i class="fab fa-facebook-f"></i></a> <a href="#."><i class="fab fa-whatsapp"></i></a> <a href="#."><i class="fab fa-instagram"></i></a> <a href="#."><i class="fab fa-pinterest-p"></i></a> <a href="#."><i class="fab fa-youtube"></i></a> </div>
                     </div>
+                </div>
 
-                    <!-- Map -->
-                    <div class="col-lg-6 padding-0">
-                        <div class="map-block">
-                            <div class="map-wrapper" id="map-canvas" data-lat="-37.814199" data-lng="144.961560" data-zoom="13" data-style="1"></div>
-                            <div class="markers-wrapper addresses-block"> <a class="marker" data-rel="map-canvas" data-lat="-37.814199" data-lng="144.961560" data-string="Connection Head office"></a> </div>
-                        </div>
+                <!-- Map -->
+                <div class="col-lg-6 padding-0">
+                    <div class="map-block">
+                        <div class="map-wrapper" id="map-canvas" data-lat="-37.814199" data-lng="144.961560" data-zoom="13" data-style="1"></div>
+                        <div class="markers-wrapper addresses-block"> <a class="marker" data-rel="map-canvas" data-lat="-37.814199" data-lng="144.961560" data-string="Connection Head office"></a> </div>
                     </div>
                 </div>
             </div>
-        </section>
-    }
-    
-
-</div>
+        </div>
+    </section>
+}
 
 <!-- Begin Map Script-->
 @section Scripts

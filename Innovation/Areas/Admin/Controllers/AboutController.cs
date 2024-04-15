@@ -24,7 +24,7 @@ namespace Innovation.Areas.Admin.Controllers
 
         public async Task<IActionResult> Create([FromRoute] int? id)
         {
-            if (id != 0)
+            if (id.HasValue && id != 0)
             {
                 var abouts = await _aboutServ.GetByIdAsync(id.Value);
                 if (abouts != null)

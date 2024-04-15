@@ -1,51 +1,61 @@
 ﻿@model Innovation.Models.ViewModel
 
-<!-- Content -->
-<div id="content">
 
-    <!-- Banner -->
-    <section class="sub-bnr">
+<!-- Banner -->
+@foreach (var items in Model.Headers)
+{
+    <section class="sub-bnr" style="background-image: url(@string.Format("/Upload/{0}",items.Image))">
         <div class="container">
-            <h2>Professionals Available</h2>
+            <h2>About The Team</h2>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="/Home/Index">Home</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Professionals</li>
+                    <li class="breadcrumb-item"><a asp-area="Client" asp-controller="Home" asp-action="Index">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Team</li>
                 </ol>
             </nav>
         </div>
     </section>
-        <!-- Papular Professionals -->
-        <main class="cd-main-content">
-            <section class="padding-top-100 padding-bottom-100">
+}
 
-                <div class="container">
-                    <section class="cd-gallery">
-                        <ul>
-                        @foreach (var tem in Model.Teams)
-                        {
-                            <li class="mix freelance  indui ">
-                                <div class="team-inside">
-                                    <div class="img-sec">
-                                        <img src="@string.Format("/UploadTeam/{0}",tem.Image)" class="img-responsive" alt="">
-                                        <div class="hover-over">
-                                        </div>
-                                    </div>
-                                    <div class="txt-sec">
-                                        <h5><a href="#."> @tem.Name </a></h5>
-                                        <span>@tem.Job</span> <span><i class="fa fa-map-marker"></i>The New York City</span>
+
+<!-- Papular Professionals -->
+<main class="cd-main-content">
+    <section class="padding-top-100 padding-bottom-100">
+        <div class="container">
+
+            @foreach (var tem in Model.Teams)
+            {
+                <section class="cd-gallery">
+                    <ul>
+                        <li class="mix freelance  indui ">
+                            <div class="team-inside" style="min-height:300px;">
+                                <div class="img-sec">
+                                    <img src="@string.Format("/UploadTeam/{0}",tem.Image)" class="img-responsive" alt="">
+                                    <div class="hover-over">
+                                        <div class="position-center-center"> </div>
                                     </div>
                                 </div>
-                            </li>
-                          }
-                        </ul>
-                        <div class="clearfix"></div>
-                    </section>
-                </div>
-                
-            </section>
-        </main>
-</div>
+                                <div class="txt-sec">
+                                    <h5><a href="#."> @tem.Name </a></h5>
+                                    <span>@tem.Job</span>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="clearfix"></div>
+
+                    <!-- Btn Center -->
+                    <div class="btn-center margin-top-30 text-center"> </div>
+                </section>
+
+            }
+
+        </div>
+    </section>
+</main>
 
 
-
+@section Scripts
+{
+    <script src="~/User/js/jquery.mixitup.min.js"></script>
+}

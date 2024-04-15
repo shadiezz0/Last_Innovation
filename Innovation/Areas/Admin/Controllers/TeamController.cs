@@ -20,9 +20,9 @@ namespace Innovation.Areas.Admin.Controllers
             return View(items);
         }
 
-        public async Task<IActionResult> Create(int? id)
+        public async Task<IActionResult> Create([FromRoute] int? id)
         {
-            if (id != null)
+            if (id.HasValue && id != 0)
             {
                 var items = await _teamServ.GetByIdAsync(id.Value);
                 if (items != null)

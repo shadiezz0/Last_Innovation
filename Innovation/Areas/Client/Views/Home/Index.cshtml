@@ -1,6 +1,6 @@
 ﻿@model Innovation.Models.ViewModel
 
-<!-- Banner -->
+<!-- Header -->
 @foreach (var items in Model.Headers)
 {
     <section class="bnr" style="background-image: url(@string.Format("/Upload/{0}",items.Image))">
@@ -11,6 +11,43 @@
                     <a href="Client/Account/Index" class="btn">Login</a> <a href="/Client/Account/Registration" class="btn">Register</a>
                 </div>
             </div>
+        </div>
+    </section>
+}
+
+<!-- Services -->
+@foreach (var itm in Model.myServices)
+{
+    <section class="padding-top-100 padding-bottom-100">
+        <div class="container">
+
+            <!-- Heading Block -->
+            <div class="heading-block text-center">
+                <h2>@itm.Title</h2>
+                <p>@itm.Description</p>
+            </div>
+
+            <!-- Companies -->
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="row">
+                        <!-- Company -->
+                        <div class="col-sm-6">
+                            <div class="com-inside">
+                                <div class="img-sec">
+                                    <img src="@string.Format("/UploadService/{0}",itm.Image)" class="img-responsive" alt="">
+                                </div>
+                                <div class="txt-sec">
+                                    <h5> @itm.NameServ </h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Btn Center -->
+            <div class="btn-center margin-top-30 text-center"> <a href="/Client/Account/Index" class="btn btn-inverse">Login for view all</a> </div>
         </div>
     </section>
 }
@@ -39,7 +76,7 @@
                             <span class="counter">@aboutt.Address</span><span></span>
                         </li>
                     </ul>
-                    <a href="/Home/AboutUs" class="btn">More Info</a>
+                    <a href="Client/Home/AboutUs" class="btn">More About Us</a>
                 </div>
             </div>
         </div>
@@ -47,8 +84,8 @@
     </section>
 }
 
-<!-- Why Service Us -->
-@foreach (var item in Model.myServices)
+<!-- Why Choose Us -->
+@foreach (var cntct in Model.Contacts)
 {
     <section class="why-choose padding-top-100 padding-bottom-0">
         <div class="container">
@@ -59,26 +96,56 @@
                     <!-- Tittle -->
                     <div class="heading-block margin-bottom-20">
                         <span class="margin-bottom-10">We deliver High Quality Services</span>
-                        <h2>@item.Title</h2>
+                        <h2>Contact</h2>
                     </div>
                     <div class="ultra-ser">
-                        <p>@item.Description</p>
+                          <p></p>
                     </div>
                     <div class="row margin-top-60">
-                            <div class="col-md-6 animate fadeInUp" data-wow-delay="0.4s">
-                                <div class="clearfix icon-box ib-style-2 i-large i-top padding-bottom-15 border-bottom-1 border-light">
-                                    <div class="ib-info">
-                                        <h4 class="h6">@item.NameServ</h4>
-                                        <p>@item.Desc_Serv</p>
-                                    </div>
+
+                        <!-- Services -->
+                        <div class="col-md-6 animate fadeInUp" data-wow-delay="0.4s">
+                            <div class="clearfix icon-box ib-style-2 i-large i-top padding-bottom-15 border-bottom-1 border-light">
+                                <div class="ib-icon"> <i class="far fa-paper-plane"></i> </div>
+                                <div class="ib-info">
+                                    <h4 class="h6">@cntct.Phone</h4>
+                                    <p></p>
                                 </div>
                             </div>
+                        </div>
+
+                        <!-- Services -->
+                        <div class="col-md-6 animate fadeInUp" data-wow-delay="0.6s">
+                            <div class="clearfix icon-box ib-style-2 i-large i-top padding-bottom-15 border-bottom-1 border-light">
+                                <div class="ib-icon"> <i class="fab fa-tencent-weibo"></i> </div>
+                                <div class="ib-info">
+                                    <h4 class="h6">@cntct.Email</h4>
+                                    <p></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Services -->
+                        <div class="col-md-6 animate fadeInUp" data-wow-delay="0.8s">
+                            <div class="clearfix icon-box ib-style-2 i-large i-top padding-bottom-15 border-bottom-1 border-light">
+                                <div class="ib-icon"> <i class="fas fa-sliders-h"></i> </div>
+                                <div class="ib-info">
+                                    <h4 class="h6">@cntct.Address</h4>
+                                    <p></p>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
+
+                    <!-- App Buttons -->
+                    <div class="app-btns"> <a href="#." class="margin-right-10"><img src="images/android-btn.png" alt=""></a><a href="#."><img src="images/app-btn.png" alt=""></a> </div>
                 </div>
 
                 <!-- Image -->
-                <div class="col-lg-4 text-right animate fadeInRight" data-wow-delay="0.4s"> <img class="img-responsive" src="@string.Format("/UploadAbout/{0}", item.Image)" alt="Why Choose Us Image" /> </div>
+                <div class="col-lg-4 text-right animate fadeInRight" data-wow-delay="0.4s"> <img class="img-responsive" src="@string.Format("/UploadContact/{0}",cntct.Image)" alt="Why Choose Us Image" /> </div>
             </div>
         </div>
     </section>
+
 }

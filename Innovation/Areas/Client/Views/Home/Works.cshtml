@@ -1,0 +1,63 @@
+﻿@model Innovation.Models.ViewModel
+
+<!-- Banner -->
+@foreach (var items in Model.Headers)
+{
+    <section class="sub-bnr" style="background-image: url(@string.Format("/Upload/{0}",items.Image))">
+        <div class="container">
+            <h2>Works</h2>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a asp-area="Client" asp-controller="Home" asp-action="Index">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Works</li>
+                </ol>
+            </nav>
+        </div>
+    </section>
+}
+
+
+<!-- Papular Professionals -->
+<main class="cd-main-content">
+    <section class="padding-top-100">
+        <div class="container">
+
+            <!-- Comapnies Iteam -->
+            @foreach (var wrk in Model.myWorks)
+            {
+                <section class="cd-gallery">
+                    <ul>
+                        <!-- Comapany List -->
+                        <li class="mix  coporate info-tech indiviual freelancer ">
+                            <div class="com-inside">
+                                <div class="img-sec">
+                                    <img src="@string.Format("/UploadWork/{0}",wrk.Image)" class="img-responsive" alt="">
+                                    <div class="hover-over">
+                                        <div class="position-center-center"></div>
+                                    </div>
+                                </div>
+                                <div class="txt-sec">
+                                    <h5>Name : @wrk.Name</h5>
+                                    <h5>Title : @wrk.Title</h5>
+                                    <h5>Description : @wrk.Description</h5>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="clearfix"></div>
+
+                    <!-- Btn Center -->
+                    <div class="btn-center margin-top-30 margin-bottom-100 text-center"></div>
+                </section>
+
+            }
+        </div>
+    </section>
+</main>
+
+
+
+@section Scripts
+{
+    <script src="~/User/js/jquery.mixitup.min.js"></script>
+}

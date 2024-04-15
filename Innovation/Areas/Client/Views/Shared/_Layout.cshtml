@@ -1,14 +1,14 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 
-<meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="M_Adnan">
-    <title>Social Networking Connecting HTML5 Template</title>
+    <title>Innovation App</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="~/User/css/bootstrap.min.css" rel="stylesheet">
@@ -28,12 +28,6 @@
     <!-- Online Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700,800" rel="stylesheet">
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
 
 </head>
 <body>
@@ -50,12 +44,12 @@
                     <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
                     <div class="collapse navbar-collapse" id="navbarNav" data-parent="#nav-resposive">
                         <ul class="nav">
-                            <li class="active"> <a href="Client/Home/Index">Home</a> </li>
-                            <li> <a href="Client/Home/AboutUs">About</a> </li>
-                            <li> <a href="Client/Home/Contact">Contact Us</a> </li>
-                            <li> <a href="Client/Home/Servicess">Services</a> </li>
-                            <li> <a href="Client/Home/Team">Team</a> </li>
-                            <li> <a href="Client/pricing">Projects </a> </li>
+                            <li><a asp-area="Client" asp-controller="Home" asp-action="Index">Home</a></li>
+                            <li><a asp-area="Client" asp-controller="Home" asp-action="AboutUs">About</a></li>
+                            <li><a asp-area="Client" asp-controller="Home" asp-action="Contact">Contact Us</a></li>
+                            <li><a asp-area="Client" asp-controller="Home" asp-action="Servicess">Services</a></li>
+                            <li><a asp-area="Client" asp-controller="Home" asp-action="Team">Team</a></li>
+                            <li><a asp-area="Client" asp-controller="Home" asp-action="Works">Works</a></li>
                         </ul>
                     </div>
 
@@ -94,12 +88,8 @@
                                 <!-- About Block -->
                                 <div class="col-md-4">
                                     <div class="block block-companies">
-                                        <h3 class="block-title">Innovation</h3>
                                         <div class="block-content">
                                             <ul>
-                                                <li> <a href="#."> <img src="images/company-img-1.jpg" alt="" class="img-responsive"> Webicode</a></li>
-                                                <li> <a href="#."> <img src="images/company-img-2.jpg" alt="" class="img-responsive"> Webicode</a></li>
-                                                <li> <a href="#."> <img src="images/company-img-6.jpg" alt="" class="img-responsive"> Webicode</a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -111,12 +101,12 @@
                                         <h3 class="block-title"><span>Usefull Links</span></h3>
                                         <div class="block-content">
                                             <ul>
-                                                <li> <a href="/Home/Index.html">Home</a> </li>
-                                                <li> <a href="/Home/AboutUs">About</a> </li>
-                                                <li> <a href="/Home/Contact">Contact Us</a> </li>
-                                                <li> <a href="/Home/Servicess">Services</a> </li>
-                                                <li> <a href="/Home/Team">Team</a> </li>
-                                                <li> <a href="pricing.html">Projects </a> </li>
+                                                <li><a asp-area="Client" asp-controller="Home" asp-action="Index">Home</a></li>
+                                                <li><a asp-area="Client" asp-controller="Home" asp-action="AboutUs">About</a> </li>
+                                                <li><a asp-area="Client" asp-controller="Home" asp-action="Contact">Contact Us</a> </li>
+                                                <li><a asp-area="Client" asp-controller="Home" asp-action="Servicess">Services</a> </li>
+                                                <li><a asp-area="Client" asp-controller="Home" asp-action="Team">Team</a> </li>
+                                                <li><a asp-area="Client" asp-controller="Home" asp-action="Works">Works</a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -142,6 +132,28 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Footer Bottom -->
+                <div class="footer-bottom">
+                    <div class="footer-bottom-wrapper">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-6 copyright">
+                                    <p>&copy; 2024 HTML5 Template. DESIGNED BY Innovation</p>
+                                </div>
+                                <div class="col-md-6 social-links">
+                                    <ul class="right">
+                                        <li><a href="#."><i class="fab fa-facebook"></i></a></li>
+                                        <li><a href="#."><i class="fab fa-twitter"></i></a></li>
+                                        <li><a href="#."><i class="fab fa-dribbble"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Footer Bottom -->
+
             </div>
         </footer>
         <!-- End Footer -->
@@ -153,6 +165,16 @@
     <script src="~/User/js/owl.carousel.min.js"></script>
     <script src="~/User/js/main.js"></script>
 
+
     @RenderSection("Scripts", required: false);
+
+    <script>
+        $(document).ready(function () {
+            $('ul.nav li').click(function () {
+                $('ul.nav li').removeClass('active');
+                $(this).addClass('active');
+            });
+        });
+    </script>
 </body>
 </html>
