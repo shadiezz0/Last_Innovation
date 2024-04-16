@@ -10,9 +10,11 @@ namespace Services.IServices
     public interface IMyServiceServ
     {
         Task<MyServices> GetByIdAsync(int id);
-        Task<IEnumerable<MyServices>> GetAllAsync();
+        Task<List<MyServices>> GetAllAsync();
         Task AddAsync(MyServices myServices);
         Task UpdateAsync(MyServices myServices);
         Task DeleteAsync(int id);
-    }
+		Task<IEnumerable<MyServices>> GetEnglishDataAsync();
+		Task<IEnumerable<MyServices>> GetArabicDataAsync();
+	}
 }

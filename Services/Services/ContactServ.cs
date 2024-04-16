@@ -49,5 +49,15 @@ namespace Services.Services
             _unitOfWork.Contact.Update(contact);
             await _unitOfWork.CompleteAsync();
         }
-    }
+
+		public async Task<IEnumerable<Contact>> GetEnglishDataAsync()
+		{
+			return await _unitOfWork.Contact.GetEnglishDataAsync();
+		}
+
+		public async Task<IEnumerable<Contact>> GetArabicDataAsync()
+		{
+			return await _unitOfWork.Contact.GetArabicDataAsync();
+		}
+	}
 }

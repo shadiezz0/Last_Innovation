@@ -14,5 +14,7 @@ namespace Services.IServices
         Task AddAsync(MyWorks myServices);
         Task UpdateAsync(MyWorks myServices);
         Task DeleteAsync(int id);
-    }
+		Task<IEnumerable<MyWorks>> GetEnglishDataAsync();
+		Task<IEnumerable<MyWorks>> GetArabicDataAsync();
+	}
 }

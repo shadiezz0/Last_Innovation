@@ -1,6 +1,7 @@
 ﻿using Core.Models;
 using Microsoft.AspNetCore.Mvc;
 using Services.IServices;
+using Services.Services;
 
 namespace Innovation.Areas.Admin.Controllers
 {
@@ -22,28 +23,28 @@ namespace Innovation.Areas.Admin.Controllers
         }
 
 
-        public async Task<IActionResult> Create([FromRoute] int? id)
-        {
-            if (id.HasValue && id != 0)
-            {
-                var contacts = await _contactServ.GetByIdAsync(id.Value);
-                if (contacts != null)
-                {
-                    return View(contacts);
-                }
-                else
-                {
-                    return NotFound();
-                }
-            }
-            else
-            {
-                return View();
-            }
-        }
+		public async Task<IActionResult> Create(int? id)
+		{
+			if (id.HasValue && id != 0)
+			{
+				var slider = await _contactServ.GetByIdAsync(id.Value);
+				if (slider != null)
+				{
+					return View(slider);
+				}
+				else
+				{
+					return NotFound();
+				}
+			}
+			else
+			{
+				return View(new Contact());
+			}
+		}
 
 
-        [HttpPost]
+		[HttpPost]
         public async Task<IActionResult> Save(Contact contact, List<IFormFile> Files)
         {
             if (ModelState.IsValid)

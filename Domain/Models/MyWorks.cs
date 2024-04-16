@@ -15,5 +15,10 @@ namespace Core.Models
         public string? Description { get; set; }
         public string? Name { get; set; }
         public string? Image { get; set; }
+
+        // Arabic properties
+        public string? TitleArabic { get; set; }
+        public string? DescriptionArabic { get; set; }
+        public string? NameArabic { get; set; }
     }
 }

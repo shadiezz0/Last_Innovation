@@ -14,5 +14,8 @@ namespace Core.Models
         public string? Name { get; set; }
         public string? Job { get; set; }
         public string? Image { get; set; }
+
+        // Arabic properties
+        public string? NameArabic { get; set; }
     }
 }

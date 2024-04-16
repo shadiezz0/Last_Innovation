@@ -1,7 +1,6 @@
 ﻿@model Core.Models.MyServices
 
-
-<h1>Create Service</h1>
+<h1> Service</h1>
 
 <form asp-controller="Service" asp-action="Save" role="form" method="post" enctype="multipart/form-data">
 
@@ -13,15 +12,23 @@
     </div>
 
     <div class="form-group">
-        <label asp-for="Title" class="control-label">Title:</label>
+        <label asp-for="Title" class="control-label">Title (English):</label>
         <div>
-            <input type="text" name="Title" class="form-control-file" asp-for="Title" />
+            <input type="text" asp-for="Title" class="form-control-file" />
             <span asp-validation-for="Title" class="text-danger"></span>
         </div>
     </div>
 
     <div class="form-group">
-        <label asp-for="Description" class="control-label">Description:</label>
+        <label asp-for="TitleArabic" class="control-label">Title (Arabic):</label>
+        <div>
+            <input type="text" asp-for="TitleArabic" class="form-control" />
+            <span asp-validation-for="TitleArabic" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Description" class="control-label">Description (English):</label>
         <div>
             <textarea class="form-control" rows="4" asp-for="Description"></textarea>
             <span asp-validation-for="Description" class="text-danger"></span>
@@ -29,7 +36,15 @@
     </div>
 
     <div class="form-group">
-        <label asp-for="NameServ" class="control-label">NameServ:</label>
+        <label asp-for="DescriptionArabic" class="control-label">Description (Arabic):</label>
+        <div>
+            <textarea class="form-control" rows="4" asp-for="DescriptionArabic"></textarea>
+            <span asp-validation-for="DescriptionArabic" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="NameServ" class="control-label">NameServ (English):</label>
         <div>
             <input type="text" asp-for="NameServ" class="form-control" />
             <span asp-validation-for="NameServ" class="text-danger"></span>
@@ -37,10 +52,26 @@
     </div>
 
     <div class="form-group">
-        <label asp-for="Desc_Serv" class="control-label">Desc_Serv:</label>
+        <label asp-for="NameServArabic" class="control-label">NameServ (Arabic):</label>
+        <div>
+            <input type="text" asp-for="NameServArabic" class="form-control" />
+            <span asp-validation-for="NameServArabic" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Desc_Serv" class="control-label">Desc_Serv (English):</label>
         <div>
             <textarea class="form-control" rows="4" asp-for="Desc_Serv"></textarea>
             <span asp-validation-for="Desc_Serv" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Desc_ServArabic" class="control-label">Desc_Serv (Arabic):</label>
+        <div>
+            <textarea class="form-control" rows="4" asp-for="Desc_ServArabic"></textarea>
+            <span asp-validation-for="Desc_ServArabic" class="text-danger"></span>
         </div>
     </div>
 

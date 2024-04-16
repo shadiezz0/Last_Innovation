@@ -18,7 +18,17 @@ namespace Services.Services
             _unitOfWork = unitOfWork;
         }
 
-        public async Task AddAsync(MyWorks myWorks)
+		public async Task<IEnumerable<MyWorks>> GetEnglishDataAsync()
+		{
+			return await _unitOfWork.Work.GetEnglishDataAsync();
+		}
+
+		public async Task<IEnumerable<MyWorks>> GetArabicDataAsync()
+		{
+			return await _unitOfWork.Work.GetArabicDataAsync();
+		}
+
+		public async Task AddAsync(MyWorks myWorks)
         {
             await _unitOfWork.Work.AddAsync(myWorks);
             await _unitOfWork.CompleteAsync();

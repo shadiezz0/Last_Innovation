@@ -9,6 +9,8 @@ namespace Core.Interfaces.InterfacesPages
 {
     public interface IAbout : IBaseRepository<About>
     {
-        Task<IEnumerable<About>> GetAboutAsync();
-    }
+        Task<List<About>> GetAboutAsync();
+		Task<IEnumerable<About>> GetEnglishDataAsync();
+		Task<IEnumerable<About>> GetArabicDataAsync();
+	}
 }

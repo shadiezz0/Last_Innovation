@@ -10,5 +10,7 @@ namespace Core.Interfaces.InterfacesPages
     public interface IWork : IBaseRepository<MyWorks>
     {
         Task<IEnumerable<MyWorks>> GetWorksAsync();
-    }
+		Task<IEnumerable<MyWorks>> GetEnglishDataAsync();
+		Task<IEnumerable<MyWorks>> GetArabicDataAsync();
+	}
 }

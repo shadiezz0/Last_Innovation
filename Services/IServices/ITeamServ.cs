@@ -14,5 +14,7 @@ namespace Services.IServices
         Task AddAsync(Team team);
         Task UpdateAsync(Team team);
         Task DeleteAsync(int id);
-    }
+		Task<IEnumerable<Team>> GetEnglishDataAsync();
+		Task<IEnumerable<Team>> GetArabicDataAsync();
+	}
 }

@@ -10,5 +10,7 @@ namespace Core.Interfaces.InterfacesPages
     public interface ITeam : IBaseRepository<Team>
     {
         Task<IEnumerable<Team>> GetTeamAsync();
-    }
+		Task<IEnumerable<Team>> GetEnglishDataAsync();
+		Task<IEnumerable<Team>> GetArabicDataAsync();
+	}
 }

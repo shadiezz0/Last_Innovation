@@ -14,5 +14,7 @@ namespace Services.IServices
         Task AddAsync(Contact contact);
         Task UpdateAsync(Contact contact);
         Task DeleteAsync(int id);
-    }
+		Task<IEnumerable<Contact>> GetEnglishDataAsync();
+		Task<IEnumerable<Contact>> GetArabicDataAsync();
+	}
 }

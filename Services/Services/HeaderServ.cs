@@ -1,16 +1,10 @@
 ﻿using Core.Interfaces;
 using Core.Models;
-using Infrastructure.Repositories;
 using Services.IServices;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Services.Services
 {
-    public class HeaderServ : IHeaderServ
+	public class HeaderServ : IHeaderServ
     {
         private readonly IUnitOfWork _unitOfWork;
 
@@ -18,6 +12,7 @@ namespace Services.Services
         {
             _unitOfWork = unitOfWork;
         }
+
 
         public async Task AddAsync(Header header)
         {
@@ -35,7 +30,7 @@ namespace Services.Services
             }
         }
 
-            public async Task<IEnumerable<Header>> GetAllAsync()
+            public async Task<List<Header>> GetAllAsync()
         {
             return await _unitOfWork.Slider.GetHeadersAsync();
         }
@@ -45,10 +40,21 @@ namespace Services.Services
             return await _unitOfWork.Slider.GetByIdAsync(id);
         }
 
+
         public async Task UpdateAsync(Header header)
         {
             _unitOfWork.Slider.Update(header);
             await _unitOfWork.CompleteAsync();
         }
-    }
+
+		public async Task<IEnumerable<Header>> GetEnglishDataAsync()
+		{
+			return await _unitOfWork.Slider.GetEnglishDataAsync();
+		}
+
+		public async Task<IEnumerable<Header>> GetArabicDataAsync()
+		{
+			return await _unitOfWork.Slider.GetArabicDataAsync();
+		}
+	}
 }

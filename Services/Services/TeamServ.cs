@@ -18,7 +18,17 @@ namespace Services.Services
         {
             _unitOfWork = unitOfWork;
         }
-        public  async Task AddAsync(Team team)
+
+		public async Task<IEnumerable<Team>> GetEnglishDataAsync()
+		{
+			return await _unitOfWork.Team.GetEnglishDataAsync();
+		}
+
+		public async Task<IEnumerable<Team>> GetArabicDataAsync()
+		{
+			return await _unitOfWork.Team.GetArabicDataAsync();
+		}
+		public  async Task AddAsync(Team team)
         {
             await _unitOfWork.Team.AddAsync(team);
             await _unitOfWork.CompleteAsync();

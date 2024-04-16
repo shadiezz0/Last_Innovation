@@ -18,7 +18,17 @@ namespace Services.Services
             _unitOfWork = unitOfWork;
         }
 
-        public async Task AddAsync(About about)
+		public async Task<IEnumerable<About>> GetEnglishDataAsync()
+		{
+			return await _unitOfWork.About.GetEnglishDataAsync();
+		}
+
+		public async Task<IEnumerable<About>> GetArabicDataAsync()
+		{
+			return await _unitOfWork.About.GetArabicDataAsync();
+		}
+
+		public async Task AddAsync(About about)
         {
             await _unitOfWork.About.AddAsync(about);
             await _unitOfWork.CompleteAsync();
@@ -34,8 +44,8 @@ namespace Services.Services
             }
         }
 
-        public async Task<IEnumerable<About>> GetAllAsync()
-        {
+        public async Task<List<About>> GetAllAsync()
+        {   
             return await _unitOfWork.About.GetAboutAsync();
         }
 

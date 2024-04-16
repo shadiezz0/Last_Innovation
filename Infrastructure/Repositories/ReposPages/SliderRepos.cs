@@ -1,17 +1,11 @@
-﻿using Core.Interfaces;
-using Core.Interfaces.InterfacesPages;
+﻿using Core.Interfaces.InterfacesPages;
 using Core.Models;
 using Infrastructure.Contexts;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Infrastructure.Repositories.ReposPages
 {
-    public class SliderRepos : BaseRepository<Header>, ISlider
+	public class SliderRepos : BaseRepository<Header>, ISlider
     {
         private readonly InnovationDbContext _context;
         public SliderRepos(InnovationDbContext context) : base(context)
@@ -19,9 +13,20 @@ namespace Infrastructure.Repositories.ReposPages
             _context = context;
         }
 
-        public async Task<IEnumerable<Header>> GetHeadersAsync()
+        public async Task<List<Header>> GetHeadersAsync()
         {
             return await _context.Headers.OrderBy(p=>p.Id).ToListAsync();
         }
-    }
+
+		public async Task<IEnumerable<Header>> GetEnglishDataAsync()
+		{
+			return await _context.Headers.Where(h => h.Description != null).ToListAsync();
+		}
+
+		public async Task<IEnumerable<Header>> GetArabicDataAsync()
+		{
+			return await _context.Headers.Where(h => h.DescriptionArabic != null).ToListAsync();
+		}
+
+	}
 }

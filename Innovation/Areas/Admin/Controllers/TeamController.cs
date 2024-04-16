@@ -20,10 +20,10 @@ namespace Innovation.Areas.Admin.Controllers
             return View(items);
         }
 
-        public async Task<IActionResult> Create([FromRoute] int? id)
-        {
-            if (id.HasValue && id != 0)
-            {
+        public async Task<IActionResult> Create(int? id)
+		{
+			if (id.HasValue && id != 0)
+			{
                 var items = await _teamServ.GetByIdAsync(id.Value);
                 if (items != null)
                 {
@@ -36,9 +36,9 @@ namespace Innovation.Areas.Admin.Controllers
             }
             else
             {
-                return View();
-            }
-        }
+				return View(new Team());
+			}
+		}
 
 
         [HttpPost]

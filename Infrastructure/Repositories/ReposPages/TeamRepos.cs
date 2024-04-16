@@ -18,7 +18,21 @@ namespace Infrastructure.Repositories.ReposPages
             _context = context;
         }
 
-        public async Task<IEnumerable<Team>> GetTeamAsync()
+		public async Task<IEnumerable<Team>> GetArabicDataAsync()
+		{
+			return await _context.Teams
+				.Where(t => t.NameArabic != null)
+				.ToListAsync();
+		}
+
+		public async Task<IEnumerable<Team>> GetEnglishDataAsync()
+		{
+			return await _context.Teams
+				.Where(t => t.Name != null)
+				.ToListAsync();
+		}
+
+		public async Task<IEnumerable<Team>> GetTeamAsync()
         {
             return await _context.Teams.OrderBy(p => p.Id).ToListAsync();
         }

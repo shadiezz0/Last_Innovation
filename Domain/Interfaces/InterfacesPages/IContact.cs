@@ -10,5 +10,7 @@ namespace Core.Interfaces.InterfacesPages
     public interface IContact : IBaseRepository<Contact>
     {
         Task<IEnumerable<Contact>> GetContactAsync();
-    }
+		Task<IEnumerable<Contact>> GetEnglishDataAsync();
+		Task<IEnumerable<Contact>> GetArabicDataAsync();
+	}
 }

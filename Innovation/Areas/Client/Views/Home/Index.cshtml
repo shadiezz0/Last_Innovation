@@ -3,30 +3,41 @@
 <!-- Header -->
 @foreach (var items in Model.Headers)
 {
-    <section class="bnr" style="background-image: url(@string.Format("/Upload/{0}",items.Image))">
-        <div class="position-center-center mob-normal">
-            <div class="container">
-                <div class="col-lg-8 center-auto text-center">
-                    <h1>@items.Description</h1>
-                    <a href="Client/Account/Index" class="btn">Login</a> <a href="/Client/Account/Registration" class="btn">Register</a>
-                </div>
-            </div>
-        </div>
-    </section>
+	<section class="bnr" style="background-image: url(@string.Format("/Upload/{0}",items.Image))">
+		<div class="position-center-center mob-normal">
+			<div class="container">
+				<div class="col-lg-8 center-auto text-center">
+
+					@{
+						string culture = ViewBag.Culture as string;
+						string description = (culture == "ar") ? items.DescriptionArabic : items.Description;
+					}
+					<h1>@description</h1>
+
+					<a href="Client/Account/Index" class="btn">Login</a> <a href="/Client/Account/Registration" class="btn">Register</a>
+				</div>
+			</div>
+		</div>
+	</section>
 }
 
 <!-- Services -->
 @foreach (var itm in Model.myServices)
 {
-    <section class="padding-top-100 padding-bottom-100">
-        <div class="container">
 
+    <section class="padding-top-100 padding-bottom-100">
+		@{
+			string culture = ViewBag.Culture as string ?? "en"; // Default culture to English if ViewBag.Culture is null
+			string description = (culture == "ar") ? itm.DescriptionArabic : itm.Description;
+			string name = (culture == "ar") ? itm.NameServArabic : itm.NameServ;
+			string title = (culture == "ar") ? itm.TitleArabic : itm.Title;
+		}
+        <div class="container">
             <!-- Heading Block -->
             <div class="heading-block text-center">
-                <h2>@itm.Title</h2>
-                <p>@itm.Description</p>
+                <h2>@title</h2>
+                <p>@description</p>
             </div>
-
             <!-- Companies -->
             <div class="row">
                 <div class="col-lg-6">
@@ -38,14 +49,13 @@
                                     <img src="@string.Format("/UploadService/{0}",itm.Image)" class="img-responsive" alt="">
                                 </div>
                                 <div class="txt-sec">
-                                    <h5> @itm.NameServ </h5>
+                                    <h5> @name </h5> <!-- Using modified property -->
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
             <!-- Btn Center -->
             <div class="btn-center margin-top-30 text-center"> <a href="/Client/Account/Index" class="btn btn-inverse">Login for view all</a> </div>
         </div>
@@ -53,27 +63,39 @@
 }
 
 <!-- ABOUT -->
-@foreach (var aboutt in Model.Abouts)
+@foreach (var about in Model.Abouts)
 {
+
     <section class="bg-white">
+
         <!-- Right Background -->
         <div class="main-page-section half_left_layout">
-            <div class="main-half-layout half_right_layout" style="background-image: url(@string.Format("/UploadAbout/{0}",aboutt.Image))">
-                  </div>
+			<div class="main-half-layout half_right_layout" style="background-image: url(@string.Format("/UploadAbout/{0}",about.Image))">
+			</div>
 
-            <!-- Left Content -->
+            <!-- Left Content -->	
             <div class="main-half-layout-container half_right_layout">
                 <div class="about-us-con">
-                    <h3>@aboutt.Name</h3>
-                    <p>@aboutt.Description</p>
+
+					@{
+						string culture = ViewBag.Culture as string; // Default culture to English if ViewBag.Culture is null
+						string description = (culture == "ar") ? about.DescriptionArabic : about.Description;
+						string name = (culture == "ar") ? about.NameArabic : about.Name;
+						string phone = (culture == "ar") ? about.PhoneArabic : about.Phone;
+						string address = (culture == "ar") ? about.AddressArabic : about.Address;
+						// Add more properties here if needed
+					}
+
+					<h3>@name</h3>
+					<p>@description</p>
                     <ul class="count-info row">
                         <li class="col">
-                            <span class="counter">@aboutt.Phone</span><span></span><br />
-                            <span class="counter">@aboutt.Email</span><span></span>
+							<span class="counter">@phone</span><span></span><br />
+                            <span class="counter">@about.Email</span><span></span>
                             <p>Company</p>
                         </li>
                         <li class="col">
-                            <span class="counter">@aboutt.Address</span><span></span>
+							<span class="counter">@address</span><span></span>
                         </li>
                     </ul>
                     <a href="Client/Home/AboutUs" class="btn">More About Us</a>
@@ -87,9 +109,14 @@
 <!-- Why Choose Us -->
 @foreach (var cntct in Model.Contacts)
 {
-    <section class="why-choose padding-top-100 padding-bottom-0">
-        <div class="container">
 
+    <section class="why-choose padding-top-100 padding-bottom-0">
+        @{
+            string culture = ViewBag.Culture as string ?? "en"; // Default culture to English if ViewBag.Culture is null
+            string phone = (culture == "ar") ? cntct.PhoneArabic : cntct.Phone;
+            string address = (culture == "ar") ? cntct.AddressArabic : cntct.Address;
+        }
+        <div class="container">
             <!-- Why Choose Us Row -->
             <div class="row">
                 <div class="col-lg-8 margin-top-20 animate fadeInLeft" data-wow-delay="0.4s">
@@ -99,21 +126,19 @@
                         <h2>Contact</h2>
                     </div>
                     <div class="ultra-ser">
-                          <p></p>
+                        <p></p>
                     </div>
                     <div class="row margin-top-60">
-
                         <!-- Services -->
                         <div class="col-md-6 animate fadeInUp" data-wow-delay="0.4s">
                             <div class="clearfix icon-box ib-style-2 i-large i-top padding-bottom-15 border-bottom-1 border-light">
                                 <div class="ib-icon"> <i class="far fa-paper-plane"></i> </div>
                                 <div class="ib-info">
-                                    <h4 class="h6">@cntct.Phone</h4>
+                                    <h4 class="h6">@phone</h4>
                                     <p></p>
                                 </div>
                             </div>
                         </div>
-
                         <!-- Services -->
                         <div class="col-md-6 animate fadeInUp" data-wow-delay="0.6s">
                             <div class="clearfix icon-box ib-style-2 i-large i-top padding-bottom-15 border-bottom-1 border-light">
@@ -124,28 +149,23 @@
                                 </div>
                             </div>
                         </div>
-
                         <!-- Services -->
                         <div class="col-md-6 animate fadeInUp" data-wow-delay="0.8s">
                             <div class="clearfix icon-box ib-style-2 i-large i-top padding-bottom-15 border-bottom-1 border-light">
                                 <div class="ib-icon"> <i class="fas fa-sliders-h"></i> </div>
                                 <div class="ib-info">
-                                    <h4 class="h6">@cntct.Address</h4>
+                                    <h4 class="h6">@address</h4>
                                     <p></p>
                                 </div>
                             </div>
                         </div>
-
                     </div>
-
                     <!-- App Buttons -->
                     <div class="app-btns"> <a href="#." class="margin-right-10"><img src="images/android-btn.png" alt=""></a><a href="#."><img src="images/app-btn.png" alt=""></a> </div>
                 </div>
-
                 <!-- Image -->
                 <div class="col-lg-4 text-right animate fadeInRight" data-wow-delay="0.4s"> <img class="img-responsive" src="@string.Format("/UploadContact/{0}",cntct.Image)" alt="Why Choose Us Image" /> </div>
             </div>
         </div>
     </section>
-
 }

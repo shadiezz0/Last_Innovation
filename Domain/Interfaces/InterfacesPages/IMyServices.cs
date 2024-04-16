@@ -9,6 +9,8 @@ namespace Core.Interfaces.InterfacesPages
 {
     public interface IMyServices : IBaseRepository<MyServices>
     {
-        Task<IEnumerable<MyServices>> GetServiceAsync();
-    }
+        Task<List<MyServices>> GetServiceAsync();
+		Task<IEnumerable<MyServices>> GetEnglishDataAsync();
+		Task<IEnumerable<MyServices>> GetArabicDataAsync();
+	}
 }

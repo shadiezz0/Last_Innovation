@@ -20,14 +20,14 @@ namespace Innovation.Areas.Admin.Controllers
             return View(Sliders);
         }
 
-        public async Task<IActionResult> Create([FromRoute]int? id)
+        public async Task<IActionResult> Create(int? id)
         {
             if (id.HasValue && id != 0)
             {
-                var sliders = await _headerServ.GetByIdAsync(id.Value);
-                if (sliders != null)
+                var slider = await _headerServ.GetByIdAsync(id.Value);
+                if (slider != null)
                 {
-                    return View(sliders);
+                    return View(slider);
                 }
                 else
                 {
@@ -36,7 +36,7 @@ namespace Innovation.Areas.Admin.Controllers
             }
             else
             {
-                return View();
+                return View(new Header()); 
             }
         }
 

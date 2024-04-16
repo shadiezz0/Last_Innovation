@@ -8,7 +8,7 @@
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <a  href="/Admin/Team/Create/0" class="btn btn-success">Create New</a>
+            <a href="/Admin/Team/Create/0" class="btn btn-success">Create New</a>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -16,24 +16,26 @@
                     <thead>
                         <tr>
                             <th>Name</th>
+                            <th>Name (Arabic)</th>
                             <th>Job</th>
                             <th>Image</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach (var items in Model)
+                        @foreach (var item in Model)
                         {
                             <tr>
-                                <td>@items.Name</td>
-                                <td>@items.Job</td>
+                                <td>@item.Name</td>
+                                <td>@item.NameArabic</td>
+                                <td>@item.Job</td>
                                 <td>
-                                    <img src="@string.Format("/UploadTeam/{0}", items.Image)" width="100" height="100" />
+                                    <img src="@string.Format("/UploadTeam/{0}", item.Image)" width="100" height="100" />
                                 </td>
                                 <td>
-                                    <a asp-controller="Team" asp-action="Create" asp-route-Id="@items.Id" class="btn btn-info">Edit</a>
+                                    <a asp-controller="Team" asp-action="Create" asp-route-Id="@item.Id" class="btn btn-info">Edit</a>
                                     <form asp-controller="Team" asp-action="Delete" method="post" style="display: inline;">
-                                        <input type="hidden" name="id" value="@items.Id" />
+                                        <input type="hidden" name="id" value="@item.Id" />
                                         <button type="submit" class="btn btn-danger">Delete</button>
                                     </form>
                                 </td>
@@ -44,7 +46,6 @@
             </div>
         </div>
     </div>
-
 </div>
 <!-- /.container-fluid -->
 @section Scripts

@@ -1,8 +1,8 @@
 ﻿@model Core.Models.Contact
 
-<h1>Create Contact</h1>
+<h1> Contact</h1>
 
-<form asp-controller="Contact" asp-action="Save" role="form" method="post" enctype="multipart/form-data">
+<form asp-area="Admin" asp-controller="Contact" asp-action="Save" role="form" method="post" enctype="multipart/form-data">
 
     <div class="form-group">
         <label asp-for="Id" class="control-label">Id:</label>
@@ -12,7 +12,7 @@
     </div>
 
     <div class="form-group">
-        <label asp-for="Address" class="control-label">Address:</label>
+        <label asp-for="Address" class="control-label">Address (English):</label>
         <div>
             <input type="text" asp-for="Address" class="form-control" />
             <span asp-validation-for="Address" class="text-danger"></span>
@@ -20,10 +20,26 @@
     </div>
 
     <div class="form-group">
-        <label asp-for="Phone" class="control-label">Phone:</label>
+        <label asp-for="AddressArabic" class="control-label">Address (Arabic):</label>
+        <div>
+            <input type="text" asp-for="AddressArabic" class="form-control" />
+            <span asp-validation-for="AddressArabic" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Phone" class="control-label">Phone (English):</label>
         <div>
             <input type="text" asp-for="Phone" class="form-control" />
             <span asp-validation-for="Phone" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="PhoneArabic" class="control-label">Phone (Arabic):</label>
+        <div>
+            <input type="text" asp-for="PhoneArabic" class="form-control" />
+            <span asp-validation-for="PhoneArabic" class="text-danger"></span>
         </div>
     </div>
 

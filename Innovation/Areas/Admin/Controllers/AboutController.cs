@@ -22,10 +22,10 @@ namespace Innovation.Areas.Admin.Controllers
         }
 
 
-        public async Task<IActionResult> Create([FromRoute] int? id)
-        {
-            if (id.HasValue && id != 0)
-            {
+        public async Task<IActionResult> Create(int? id)
+		{
+			if (id.HasValue && id != 0)
+			{
                 var abouts = await _aboutServ.GetByIdAsync(id.Value);
                 if (abouts != null)
                 {
@@ -38,9 +38,9 @@ namespace Innovation.Areas.Admin.Controllers
             }
             else
             {
-                return View();
-            }
-        }
+				return View(new About());
+			}
+		}
 
 
         [HttpPost]

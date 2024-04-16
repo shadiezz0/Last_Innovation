@@ -16,5 +16,11 @@ namespace Core.Models
         public string? NameServ { get; set; }
         public string? Desc_Serv { get; set; }
         public string? Image { get; set; }
+
+        // Arabic properties
+        public string? TitleArabic { get; set; }
+        public string? DescriptionArabic { get; set; }
+        public string? NameServArabic { get; set; }
+        public string? Desc_ServArabic { get; set; }
     }
 }

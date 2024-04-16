@@ -2,7 +2,7 @@
 
 <h1>Create AboutInfo</h1>
 
-<form asp-controller="About" asp-action="Save" role="form" method="post" enctype="multipart/form-data">
+<form asp-area="Admin" asp-controller="About" asp-action="Save" role="form" method="post" enctype="multipart/form-data">
 
     <div class="form-group">
         <label asp-for="Id" class="control-label">Id:</label>
@@ -75,12 +75,68 @@
         </div>
     </div>
 
-
     <div class="form-group">
         <label asp-for="Address" class="control-label">Address:</label>
         <div>
             <input type="text" asp-for="Address" class="form-control" />
             <span asp-validation-for="Address" class="text-danger"></span>
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <label asp-for="TitleArabic" class="control-label"> :العنوان</label>
+        <div>
+            <input type="text" name="TitleArabic" class="form-control-file" asp-for="TitleArabic" />
+            <span asp-validation-for="TitleArabic" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="DescriptionArabic" class="control-label">:الوصف</label>
+        <div>
+            <textarea class="form-control" rows="4" asp-for="DescriptionArabic"></textarea>
+            <span asp-validation-for="DescriptionArabic" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="NameArabic" class="control-label">:الاسم</label>
+        <div>
+            <input type="text" asp-for="NameArabic" class="form-control" />
+            <span asp-validation-for="NameArabic" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="NationalityArabic" class="control-label">:الجنسية</label>
+        <div>
+            <input type="text" asp-for="NationalityArabic" class="form-control" />
+            <span asp-validation-for="NationalityArabic" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="WorkStateArabic" class="control-label">:حالة العمل</label>
+        <div>
+            <input type="text" asp-for="WorkStateArabic" class="form-control" />
+            <span asp-validation-for="WorkStateArabic" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="PhoneArabic" class="control-label">:الموبيل</label>
+        <div>
+            <input type="text" asp-for="PhoneArabic" class="form-control" />
+            <span asp-validation-for="PhoneArabic" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="AddressArabic" class="control-label">: العنوان</label>
+        <div>
+            <input type="text" asp-for="AddressArabic" class="form-control" />
+            <span asp-validation-for="AddressArabic" class="text-danger"></span>
         </div>
     </div>
 

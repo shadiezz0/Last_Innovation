@@ -1,14 +1,16 @@
-using Core.Interfaces.InterfacesPages;
 using Innovation.Models;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Localization;
 using Services.IServices;
-using System.Diagnostics;
 
 namespace Innovation.Areas.Client.Controllers
 {
-    [Area("Client")]
+	[Area("Client")]
     public class HomeController : Controller
     {
+        private readonly IStringLocalizer<HomeController> _localizer;
+
         private readonly IHeaderServ _headerServ;
         private readonly IAboutServ _aboutServ;
         private readonly IMyServiceServ _myServices;
@@ -16,8 +18,8 @@ namespace Innovation.Areas.Client.Controllers
         private readonly ITeamServ _teamServ;
         private readonly IWorkServ _workServ;
 
-        public HomeController(IHeaderServ headerServ, IAboutServ aboutServ, IMyServiceServ myServices, IContactServ contactServ, ITeamServ teamServ
-            , IWorkServ workServ)
+		public HomeController(IHeaderServ headerServ, IAboutServ aboutServ, IMyServiceServ myServices, IContactServ contactServ, ITeamServ teamServ
+            , IWorkServ workServ , IStringLocalizer<HomeController> localizer)
         {
             _headerServ = headerServ;
             _aboutServ = aboutServ;
@@ -25,9 +27,30 @@ namespace Innovation.Areas.Client.Controllers
             _contactServ = contactServ;
             _teamServ = teamServ;
             _workServ = workServ;
-        }
+            _localizer = localizer;
+		}
 
-        public async Task<IActionResult> Index()
+		[HttpPost]
+		public IActionResult SetLanguage(string culture, string returnUrl)
+		{
+			Response.Cookies.Append(
+				CookieRequestCultureProvider.DefaultCookieName,
+				CookieRequestCultureProvider.MakeCookieValue(new RequestCulture(culture)),
+				new CookieOptions { Expires = DateTimeOffset.UtcNow.AddYears(1) }
+				);
+
+			return LocalRedirect(returnUrl);
+		}
+
+
+		private string GetCurrentCulture()
+		{
+			var requestCulture = HttpContext.Features.Get<IRequestCultureFeature>();
+			return requestCulture?.RequestCulture?.Culture?.Name;
+		}
+
+
+		public async Task<IActionResult> Index()
         {
             ViewModel viewModel = new ViewModel();
 
@@ -42,10 +65,29 @@ namespace Innovation.Areas.Client.Controllers
             viewModel.Contacts = await _contactServ.GetAllAsync();
             viewModel.Contacts = viewModel.Contacts.Take(1);
 
-            return View(viewModel);
+
+			string culture = GetCurrentCulture();
+			ViewBag.Culture = culture;
+
+			if (culture == "en")
+			{
+				viewModel.Headers = await _headerServ.GetEnglishDataAsync();
+				viewModel.Abouts = await _aboutServ.GetEnglishDataAsync();
+				viewModel.Contacts = await _contactServ.GetEnglishDataAsync();
+
+			}
+			else
+			{
+				viewModel.Headers = await _headerServ.GetArabicDataAsync();
+				viewModel.Abouts = await _aboutServ.GetArabicDataAsync();
+				viewModel.Contacts = await _contactServ.GetArabicDataAsync();
+			}
+
+			return View(viewModel);
         }
 
-        public async Task<IActionResult> AboutUs()
+
+		public async Task<IActionResult> AboutUs()
         {
             ViewModel viewModel = new ViewModel();
 
@@ -55,8 +97,24 @@ namespace Innovation.Areas.Client.Controllers
             viewModel.Abouts = await _aboutServ.GetAllAsync();
             viewModel.Abouts = viewModel.Abouts.Take(1);
 
-            return View(viewModel);
+			string culture = GetCurrentCulture();
+			ViewBag.Culture = culture;
+
+			if (culture == "en")
+			{
+				viewModel.Headers = await _headerServ.GetEnglishDataAsync();
+				viewModel.Abouts = await _aboutServ.GetEnglishDataAsync();
+
+			}
+			else
+			{
+				viewModel.Headers = await _headerServ.GetArabicDataAsync();
+				viewModel.Abouts = await _aboutServ.GetArabicDataAsync();
+			}
+
+			return View(viewModel);
         }
+
 
         public async Task<IActionResult> Contact()
         {
@@ -68,8 +126,25 @@ namespace Innovation.Areas.Client.Controllers
             viewModel.Contacts = await _contactServ.GetAllAsync();
             viewModel.Contacts = viewModel.Contacts.Take(1);
 
-            return View(viewModel);
+
+			string culture = GetCurrentCulture();
+			ViewBag.Culture = culture;
+
+			if (culture == "en")
+			{
+				viewModel.Headers = await _headerServ.GetEnglishDataAsync();
+				viewModel.Contacts = await _contactServ.GetEnglishDataAsync();
+
+			}
+			else
+			{
+				viewModel.Headers = await _headerServ.GetArabicDataAsync();
+				viewModel.Contacts = await _contactServ.GetArabicDataAsync();
+			}
+
+			return View(viewModel);
         }
+
 
         public async Task<IActionResult> Team()
         {
@@ -80,8 +155,25 @@ namespace Innovation.Areas.Client.Controllers
 
             viewModel.Teams = await _teamServ.GetAllAsync();
 
-            return View(viewModel);
+
+			string culture = GetCurrentCulture();
+			ViewBag.Culture = culture;
+
+			if (culture == "en")
+			{
+				viewModel.Headers = await _headerServ.GetEnglishDataAsync();
+				viewModel.Teams = await _teamServ.GetEnglishDataAsync();
+
+			}
+			else
+            {
+				viewModel.Headers = await _headerServ.GetArabicDataAsync();
+				viewModel.Teams = await _teamServ.GetArabicDataAsync();
+			}
+
+			return View(viewModel);
         }
+
 
         public async Task<IActionResult> Servicess()
         {
@@ -96,9 +188,24 @@ namespace Innovation.Areas.Client.Controllers
 
             viewModel.myServices = await _myServices.GetAllAsync();
 
+			string culture = GetCurrentCulture();
+			ViewBag.Culture = culture;
 
-            return View(viewModel);
+			if (culture == "en")
+			{
+				viewModel.Headers = await _headerServ.GetEnglishDataAsync();
+				viewModel.myServices = await _myServices.GetEnglishDataAsync();
+
+			}
+			else
+			{
+				viewModel.Headers = await _headerServ.GetArabicDataAsync();
+				viewModel.myServices = await _myServices.GetArabicDataAsync();
+			}
+
+			return View(viewModel);
         }
+
 
         public async Task<IActionResult> Works()
         {
@@ -109,8 +216,30 @@ namespace Innovation.Areas.Client.Controllers
 
             viewModel.myWorks = await _workServ.GetAllAsync();
 
-            return View(viewModel);
+
+			string culture = GetCurrentCulture();
+			ViewBag.Culture = culture;
+
+			if (culture == "en")
+			{
+				viewModel.Headers = await _headerServ.GetEnglishDataAsync();
+				viewModel.myWorks = await _workServ.GetEnglishDataAsync();
+
+			}
+			else
+			{
+				viewModel.Headers = await _headerServ.GetArabicDataAsync();
+				viewModel.myWorks = await _workServ.GetArabicDataAsync();
+			}
+
+			return View(viewModel);
         }
 
-    }
+
+
+
+	}
 }
+
+
+

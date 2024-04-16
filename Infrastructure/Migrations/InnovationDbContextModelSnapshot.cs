@@ -33,10 +33,16 @@ namespace Infrastructure.Migrations
                     b.Property<string>("Address")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("AddressArabic")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("DateOfBirth")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DescriptionArabic")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")
@@ -48,16 +54,31 @@ namespace Infrastructure.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("NameArabic")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Nationality")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NationalityArabic")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Phone")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("PhoneArabic")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("TitleArabic")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("WorkState")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("WorkStateArabic")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -76,6 +97,15 @@ namespace Infrastructure.Migrations
                     b.Property<string>("Address")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("AddressArabic")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DescriptionArabic")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -85,6 +115,10 @@ namespace Infrastructure.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Phone")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneArabic")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -102,6 +136,9 @@ namespace Infrastructure.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DescriptionArabic")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Image")
@@ -123,7 +160,13 @@ namespace Infrastructure.Migrations
                     b.Property<string>("Desc_Serv")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Desc_ServArabic")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DescriptionArabic")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Image")
@@ -132,7 +175,13 @@ namespace Infrastructure.Migrations
                     b.Property<string>("NameServ")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("NameServArabic")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TitleArabic")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -151,13 +200,22 @@ namespace Infrastructure.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("DescriptionArabic")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Image")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("NameArabic")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TitleArabic")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -180,6 +238,9 @@ namespace Infrastructure.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NameArabic")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
